@@ -1,0 +1,7 @@
+title: "Smart Gas Detector"
+description: "เว็บไซต์โปรเจกต์ Smart Gas Detector"
+baseurl: "" 
+url: "https://github.com/Chakkapop/Smart-Gas-Detector/"
+theme: minima
+plugins:
+  - jekyll-feed
