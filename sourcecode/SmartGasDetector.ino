@@ -1,8 +1,6 @@
 #include <Wire.h>                           
 #include <Adafruit_GFX.h>                    
 #include <Adafruit_SSD1306.h>                 
-#include <Arduino.h>
-#include <WiFi.h>
 #include <WiFiMulti.h>
 #include <ArtronShop_LineNotify.h>
 
@@ -21,7 +19,7 @@ const unsigned long sendInterval = 30000; // ส่งข้อมูลทุ�
 #define led 2                       
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define OLED_RESET   -1                       //OLED reset on lin 4
+#define OLED_RESET   -1                  
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
@@ -29,7 +27,6 @@ void setup() {
   pinMode(buzzer,OUTPUT);                 
   pinMode(led,OUTPUT);                       
   Serial.begin(115200);
-  // Serial.setDebugOutput(true);
 
   Serial.println();
   Serial.println();
@@ -104,7 +101,6 @@ void loop() {
     display.print("BUTANE");
     display.setTextSize(1);
     display.setCursor(83, 28);
-    //display.print("(C4H10)");
     display.setTextSize(2);
     display.setCursor(19, 45);
     display.print("LEVELS!!");
