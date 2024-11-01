@@ -21,151 +21,150 @@
     
     <div class="post" id="post1">
         <h3>จุดประสงค์ของโปรเจกต์ Smart Gas Detector</h3>
-        <p> -เพิ่มความปลอดภัย: ตรวจจับและแจ้งเตือนการรั่วไหลของแก๊สอย่างรวดเร็ว เพื่อลดความเสี่ยงจากการระเบิด เพลิงไหม้ หรืออันตรายจากการสูดดมแก๊สพิษ</p>
-        <p> -ส่งการแจ้งเตือนถึงผู้ใช้งานผ่านอุปกรณ์ต่าง ๆ เช่น แอปมือถือ สัญญาณเสียง หรือไฟแจ้งเตือน เพื่อให้ผู้ใช้สามารถตอบสนองได้อย่างรวดเร็ว</p>
-        <p> -เพื่อเสริมประสิทธิภาพระบบรักษาความปลอดภัย: เชื่อมต่อกับระบบความปลอดภัยอื่น ๆ เช่น ระบบดับเพลิงหรือระบบระบายอากาศอัตโนมัติ</p>
-        <p>     -เพื่อพัฒนาการในการประยุกต์ใช้ Microcontroller</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; - เพิ่มความปลอดภัย: ตรวจจับและแจ้งเตือนการรั่วไหลของแก๊สอย่างรวดเร็ว เพื่อลดความเสี่ยงจากการระเบิด เพลิงไหม้ หรืออันตรายจากการสูดดมแก๊สพิษ</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; - ส่งการแจ้งเตือนถึงผู้ใช้งานผ่านอุปกรณ์ต่าง ๆ เช่น แอปมือถือ สัญญาณเสียง หรือไฟแจ้งเตือน เพื่อให้ผู้ใช้สามารถตอบสนองได้อย่างรวดเร็ว</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; - เพื่อเสริมประสิทธิภาพระบบรักษาความปลอดภัย: เชื่อมต่อกับระบบความปลอดภัยอื่น ๆ เช่น ระบบดับเพลิงหรือระบบระบายอากาศอัตโนมัติ</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; - เพื่อพัฒนาการในการประยุกต์ใช้ Microcontroller</p>
     </div>
 
     <div class="post" id="post2">
-        <h3>[รายละเอียด]</h3>
-        <p>โครงงานนี้เป็นการใช้ Microcontroller ในการตรวจสอบการรั่วไหลของแก๊สที่เป็นอันตรายต่อมนุษย์และแจ้งเตือนต่อผู้ใช้งานอย่างทันท่วงทีเพื่อป้องกันภัยที่เกิดขึ้น 
+        <h3>รายละเอียด</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;โครงงานนี้เป็นการใช้ Microcontroller ในการตรวจสอบการรั่วไหลของแก๊สที่เป็นอันตรายต่อมนุษย์และแจ้งเตือนต่อผู้ใช้งานอย่างทันท่วงทีเพื่อป้องกันภัยที่เกิดขึ้น 
         Microcontroller ที่ใช้คือ ESP32 Sensorในการตรวจจับแก๊สคือ MQ-9 Sensor Gas และแสดงผลด้วยจอ 0.96 inch OLED และมีBuzzerกับLEDเพื่อส่งสัญญาณเมื่อแก๊สรั่วไหล 
-            เมื่อSensorตรวจจับแก๊สได้Microcontroller จะส่งNotifyไปที่LINEของผู้ใช้งานและจะส่งสัญญาณเสียงBuzzerและสัญญาณไฟLEDเพื่อแจ้งเตือนผู้คนที่อยู่รอบข้าง</p>
+        เมื่อSensorตรวจจับแก๊สได้Microcontroller จะส่งNotifyไปที่LINEของผู้ใช้งานและจะส่งสัญญาณเสียงBuzzerและสัญญาณไฟLEDเพื่อแจ้งเตือนผู้คนที่อยู่รอบข้าง</p>
 
     </div>
 
     <div class="post" id="post3">
-        <h3>[source code]</h3>
+        <h3>source code</h3>
         <div class="post1"> 
-            <p class="styl"> #include  < Wire.h > </p>                           
-            <p class="styl"> #include  < Adafruit_GFX.h > </p>                    
-            <p class="styl"> #include  < Adafruit_SSD1306.h ></Adafruit_SSD1306.h></p>                 
-            <p class="styl"> #include  < Arduino.h ></Arduino.h></p>
-            <p class="styl"> #include  < WiFi.h ></WiFi.h></p>
-            <p class="styl"> #include  < WiFiMulti.h ></WiFiMulti.h></p>
-            <p class="styl"> #include  < ArtronShop_LineNotify.h ></ArtronShop_LineNotify.h></p>
-            <p class="styl"> </p>
-            <p class="styl"> #define WIFI_SSID "--------" // WiFi Name</p>
-            <p class="styl"> #define WIFI_PASSWORD "--------" // WiFi Password</p>
-            <p class="styl"> </p>
-            <p class="styl"> #define LINE_TOKEN "--------------------------" // LINE Token</p>
-            <p class="styl"> </p>
-            <p class="styl"> WiFiMulti wifiMulti;</p>
-            <p class="styl"> </p>
-            <p class="styl"> unsigned long lastSendTime = 0;   // เวลาสุดท้ายที่ส่งไปยัง Line Notify</p>
-            <p class="styl"> const unsigned long sendInterval = 30000; // ส่งข้อมูลทุกๆ 30 วินาที</p>
-            <p class="styl"> </p>
-            <p class="styl"> #define sensor 34</p>                        
-            <p class="styl"> #define buzzer 4</p>                      
-            <p class="styl"> #define led 2  </p>                     
-            <p class="styl"> #define SCREEN_WIDTH 128 // OLED display width, in pixels</p>
-            <p class="styl"> #define SCREEN_HEIGHT 64 // OLED display height, in pixels</p>
-            <p class="styl"> #define OLED_RESET   -1                       //OLED reset on lin 4</p>
-            <p class="styl"> </p>
-            <p class="styl"> Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);</p>
-            <p class="styl"> </p>
-            <p class="styl"> void setup() {  </p>
-            <p class="styl">  pinMode(buzzer,OUTPUT);          </p>       
-            <p class="styl">  pinMode(led,OUTPUT);           </p>            
-            <p class="styl">  Serial.begin(115200);</p>
-            <p class="styl">  // Serial.setDebugOutput(true);</p>
-            <p class="styl"></p>
-            <p class="styl">  Serial.println();</p>
-            <p class="styl">  Serial.println();</p>
-            <p class="styl">  Serial.println();</p>
-            <p class="styl"></p>
-            <p class="styl">  WiFi.mode(WIFI_STA);</p>
-            <p class="styl">  wifiMulti.addAP(WIFI_SSID, WIFI_PASSWORD);</p>
-            <p class="styl">    </p>
-            <p class="styl">  // wait for WiFi connection</p>
-            <p class="styl">  Serial.print("Waiting for WiFi to connect...");</p>
-            <p class="styl">  while ((wifiMulti.run() != WL_CONNECTED)) {</p>
-            <p class="styl">    Serial.print(".");</p>
-            <p class="styl">  }</p>
-            <p class="styl">  Serial.println(" connected");</p>
-            <p class="styl"></p>
-            <p class="styl">  LINE.begin(LINE_TOKEN);</p>
-            <p class="styl"></p>
-            <p class="styl">  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { </p>
-            <p class="styl">    Serial.println(F("SSD1306 allocation failed"));</p>
-            <p class="styl">    for(;;); // </p>
-            <p class="styl">  }</p>
-            <p class="styl">  display.display();     </p>                     
-            <p class="styl">  display.clearDisplay();     </p>             
-            <p class="styl"> </p>
-            <p class="styl">}</p>
-            <p class="styl"></p>
-            <p class="styl"></p>
-            <p class="styl">void loop() {       </p>       
-            <p class="styl">int values;       </p>                                                      
-            <p class="styl">int grafX = 0;       </p>                         
-            <p class="styl">display.clearDisplay();   </p>                 
-            <p class="styl">values = analogRead(sensor);</p>
-            <p class="styl"> values = map(values, 0, 4095, 0, 20);</p>  
-            <p class="styl"> grafX = map(values, 0, 20, 0, 127);          // map ค่ากับความกว้างของจอ</p>  
-            <p class="styl"> display.fillRect(0, 0, grafX, 16, WHITE);  // print กราฟค่า</p>  
-            <p class="styl"> </p>  
-            <p class="styl"> display.setTextSize(2);                     // ตั้งขนาดตัวอักษร</p>  
-            <p class="styl"> display.setTextColor(WHITE);                // ตั้งสีตัวอักษร</p>  
-            <p class="styl"> display.setCursor(5, 33);                     // ตั้งตำแหน่ง cursor</p>  
-            <p class="styl"> display.println("LOW");</p>  
-            <p class="styl"> display.setCursor(46, 33); </p>  
-            <p class="styl"> display.println("BUTANE"); </p>  
-            <p class="styl"> </p>  
-            <p class="styl"> display.setTextSize(2);  </p>                     
-            <p class="styl"> display.setTextColor(WHITE); </p>                 
-            <p class="styl"> display.setCursor(28, 50);</p>  
-            <p class="styl"> display.print("LEVELS");  // print ระดับแก๊ส</p>  
-            <p class="styl"> </p>
-            <p class="styl"> display.setTextSize(1); </p>  
-            <p class="styl"> display.setCursor(48, 20);</p>   
-            <p class="styl"> display.print(values); // print ค่าแก๊ส</p>  
-            <p class="styl"> display.print(" V");</p>  
-            <p class="styl"> grafX = map(values, 0, 100, 0, 127);</p>            
-            <p class="styl"> display.fillRect(0, 0, grafX, 16, WHITE);</p>    
-            <p class="styl"> </p>  
-            <p class="styl"> if (values >= 6) {</p>  
-            <p class="styl"> unsigned long currentTime = millis(); </p>    
-            <p class="styl"> </p>
-            <p class="styl"> if (currentTime - lastSendTime > sendInterval) {</p>  
-            <p class="styl"> sendtoLine();                             // ส่งข้อความไปที่ Line Notify</p>      
-            <p class="styl"> lastSendTime = currentTime;               // อัพเดตเวลาสุดท้ายที่ส่ง</p>      
-            <p class="styl"> }</p>    
-            <p class="styl"> </p>
-            <p class="styl"> digitalWrite(led, HIGH); // เปิดไฟ LED</p>   
-            <p class="styl"> digitalWrite(buzzer, HIGH); // เปิด buzzer</p>    
-            <p class="styl"> </p>
-            <p class="styl"> display.fillRect(0, 17, 128, 64, SSD1306_WHITE);</p>   
-            <p class="styl"> display.setTextColor(BLACK);</p>                   
-            <p class="styl"> display.setTextSize(2);</p>   
-            <p class="styl"> display.setCursor(5, 23);</p>   
-            <p class="styl"> display.print("BUTANE");</p>   
-            <p class="styl"> display.setTextSize(1);</p>   
-            <p class="styl"> display.setCursor(83, 28);</p>   
-            <p class="styl"> //display.print("(C4H10)");</p>   
-            <p class="styl"> display.setTextSize(2);</p>   
-            <p class="styl"> display.setCursor(19, 45);</p>   
-            <p class="styl"> display.print("LEVELS!!");</p>   
-            <p class="styl"> </p>
-            <p class="styl"> display.setTextColor(BLACK);   </p>                
-            <p class="styl"> display.setTextSize(2);</p>    
-            <p class="styl"> display.setCursor(39, 2);</p>    
-            <p class="styl"> display.print("HIGH");</p>    
-            <p class="styl"> </p>
-            <p class="styl"> } else { </p>                                        
-            <p class="styl"> digitalWrite(led, LOW);  // ปิดไฟ LED</p>    
-            <p class="styl"> digitalWrite(buzzer, LOW);  // ปิด buzzer</p>    
-            <p class="styl"> }</p>  
-            <p class="styl"> Serial.print(values);</p>  
-            <p class="styl"> Serial.println(" V");</p>  
-            <p class="styl"> display.display();  // อัพเดตจอแสดงผล</p>  
-            <p class="styl"> delay(500);</p>  
-            <p class="styl"> }</p>
-            <p class="styl"> </p>
-            <p class="styl"> void sendtoLine() {</p>
-            <p class="styl"> LINE.send("ตรวจพบแก๊สเกินกำหนด!!");</p>  
-            <p class="styl"> } </p></div>
+            <pre style="color: aliceblue;">
+                #include <Wire.h>                           
+                #include <Adafruit_GFX.h>                    
+                #include <Adafruit_SSD1306.h>                 
+                #include <WiFiMulti.h>
+                #include <ArtronShop_LineNotify.h>
+                
+                #define WIFI_SSID "--------" // WiFi Name
+                #define WIFI_PASSWORD "--------" // WiFi Password
+                
+                #define LINE_TOKEN "--------------------------" // LINE Token
+                
+                WiFiMulti wifiMulti;
+                
+                unsigned long lastSendTime = 0;   // เวลาสุดท้ายที่ส่งไปยัง Line Notify
+                const unsigned long sendInterval = 30000; // ส่งข้อมูลทุกๆ 30 วินาที
+                
+                #define sensor 34                        
+                #define buzzer 4                      
+                #define led 2                       
+                #define SCREEN_WIDTH 128 // OLED display width, in pixels
+                #define SCREEN_HEIGHT 64 // OLED display height, in pixels
+                #define OLED_RESET   -1                  
+                
+                Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+                
+                void setup() {  
+                  pinMode(buzzer,OUTPUT);                 
+                  pinMode(led,OUTPUT);                       
+                  Serial.begin(115200);
+                
+                  Serial.println();
+                  Serial.println();
+                  Serial.println();
+                
+                  WiFi.mode(WIFI_STA);
+                  wifiMulti.addAP(WIFI_SSID, WIFI_PASSWORD);
+                
+                  // wait for WiFi connection
+                  Serial.print("Waiting for WiFi to connect...");
+                  while ((wifiMulti.run() != WL_CONNECTED)) {
+                    Serial.print(".");
+                  }
+                  Serial.println(" connected");
+                
+                  LINE.begin(LINE_TOKEN);
+                
+                  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+                    Serial.println(F("SSD1306 allocation failed"));
+                    for(;;); // 
+                  }
+                  display.display();                          
+                  display.clearDisplay();                   
+                  
+                }
+                
+                
+                void loop() {
+                  
+                  int values;                                                             
+                  int grafX = 0;                                
+                  display.clearDisplay();                    
+                  values = analogRead(sensor);
+                  values = map(values, 0, 4095, 0, 20);
+                  grafX = map(values, 0, 20, 0, 127);          // map ค่ากับความกว้างของจอ
+                  display.fillRect(0, 0, grafX, 16, WHITE);  // print กราฟค่า
+                  
+                  display.setTextSize(2);                     // ตั้งขนาดตัวอักษร
+                  display.setTextColor(WHITE);                // ตั้งสีตัวอักษร
+                  display.setCursor(5, 33);                     // ตั้งตำแหน่ง cursor
+                  display.println("LOW");
+                  display.setCursor(46, 33); 
+                  display.println("BUTANE"); 
+                  
+                  display.setTextSize(2);                     
+                  display.setTextColor(WHITE);                
+                  display.setCursor(28, 50);
+                  display.print("LEVELS");  // print ระดับแก๊ส
+                  
+                  display.setTextSize(1); 
+                  display.setCursor(48, 20); 
+                  display.print(values); // print ค่าแก๊ส
+                  display.print(" V");
+                  grafX = map(values, 0, 100, 0, 127);          
+                  display.fillRect(0, 0, grafX, 16, WHITE);  
+                  
+                  if (values >= 6) {
+                    unsigned long currentTime = millis(); 
+                    
+                    if (currentTime - lastSendTime > sendInterval) {
+                      sendtoLine();                             // ส่งข้อความไปที่ Line Notify
+                      lastSendTime = currentTime;               // อัพเดตเวลาสุดท้ายที่ส่ง
+                    }
+                    
+                    digitalWrite(led, HIGH); // เปิดไฟ LED
+                    digitalWrite(buzzer, HIGH); // เปิด buzzer 
+                    
+                    display.fillRect(0, 17, 128, 64, SSD1306_WHITE);
+                    display.setTextColor(BLACK);                
+                    display.setTextSize(2);
+                    display.setCursor(5, 23);
+                    display.print("BUTANE");
+                    display.setTextSize(1);
+                    display.setCursor(83, 28);
+                    display.setTextSize(2);
+                    display.setCursor(19, 45);
+                    display.print("LEVELS!!");
+                    
+                    display.setTextColor(BLACK);                
+                    display.setTextSize(2);
+                    display.setCursor(39, 2);
+                    display.print("HIGH");
+                    
+                  } else {                                       
+                    digitalWrite(led, LOW);  // ปิดไฟ LED
+                    digitalWrite(buzzer, LOW);  // ปิด buzzer
+                  }
+                  Serial.print(values);
+                  Serial.println(" V");
+                  display.display();  // อัพเดตจอแสดงผล
+                  delay(500);
+                }
+                
+                void sendtoLine() {
+                  LINE.send("ตรวจพบแก๊สเกินกำหนด!!");
+                }
+            </pre></div>
     </div>
 
 </body>
