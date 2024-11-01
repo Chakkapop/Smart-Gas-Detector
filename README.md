@@ -19,9 +19,15 @@ Sensorในการตรวจจับแก๊สคือ MQ-9 Sensor Gas 
 
 https://youtu.be/gUXTy4dL-Ww
 
-## สมาชิก
+## Website
 
-1. 66070025 นายจักรภพ บัวจันทร์ ![12](https://github.com/user-attachments/assets/f13dc52d-7794-4abc-869a-b53557185ff5)
-2. 66070034 นายเจษฎาพร บัวศรี ![pak](https://github.com/user-attachments/assets/a97f971e-a9d3-4216-8150-f253bd54f5c2)
-3. 66070046 นายชัยธวัช ชมภูเพ็ชร ![cer](https://github.com/user-attachments/assets/354a98ee-d2d0-434f-a969-a8ed7d79d6bb)
-4. 66070242 นายกิตติภูมิ วงศ์ษา ![phum](https://github.com/user-attachments/assets/a0094a95-85a5-45b0-9aae-2936f3cadcbf)
+https://chakkapop.github.io/Smart-Gas-Detector/
+
+## สมาชิก
+| ID       | Name                                  | Img                                                                             |
+|----------|---------------------------------------|---------------------------------------------------------------------------------|
+| 66070025 | นายจักรภพ บัวจันทร์ (ฟาฎิล)          |![12](https://github.com/user-attachments/assets/f13dc52d-7794-4abc-869a-b53557185ff5)|
+| 66070034 | นายเจษฎาพร บัวศรี (โอ๊ค)            |![pak](https://github.com/user-attachments/assets/7ca991df-8da3-4649-a509-8d7eec083ff8)     |
+| 66070046 | นายชัยธวัช ชมภูเพ็ชร (ซูเคอร์)          | ![cer](https://github.com/user-attachments/assets/6c7011cd-65d2-4129-bc22-c3ecf762ba84)    |
+| 66070242 | นายกิตติภูมิ วงศ์ษา (ภูมิ)            | ![phum](https://github.com/user-attachments/assets/adbc50e6-176e-4b21-b81b-dc5a3af83651)     |
+
