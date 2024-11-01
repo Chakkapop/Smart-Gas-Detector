@@ -21,7 +21,7 @@ https://youtu.be/gUXTy4dL-Ww
 
 ## สมาชิก
 
-1. 66070025 นายจักรภพ บัวจันทร์
-2. 66070034 นายเจษฎาพร บัวศรีE
-3. 66070046 นายชัยธวัช ชมภูเพ็ชร
-4. 66070242 นายกิตติภูมิ วงศ์ษา
+1. 66070025 นายจักรภพ บัวจันทร์ ![12](https://github.com/user-attachments/assets/f13dc52d-7794-4abc-869a-b53557185ff5)
+2. 66070034 นายเจษฎาพร บัวศรี ![pak](https://github.com/user-attachments/assets/a97f971e-a9d3-4216-8150-f253bd54f5c2)
+3. 66070046 นายชัยธวัช ชมภูเพ็ชร ![cer](https://github.com/user-attachments/assets/354a98ee-d2d0-434f-a969-a8ed7d79d6bb)
+4. 66070242 นายกิตติภูมิ วงศ์ษา ![phum](https://github.com/user-attachments/assets/a0094a95-85a5-45b0-9aae-2936f3cadcbf)
